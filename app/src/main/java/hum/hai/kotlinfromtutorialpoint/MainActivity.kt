@@ -3,8 +3,6 @@ package hum.hai.kotlinfromtutorialpoint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import java.util.*
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +14,135 @@ class MainActivity : AppCompatActivity() {
         stringBasic()
         arrayBasic()
         collectionBasic()
+        ranges()
+        forLoop()
+        switch()
+        returnBreakContinue()
+        labelExample()
+        classAndObjectExample()
+        interfaceExample()
+    }
+
+    private fun interfaceExample() {
+
+        val v : IndividualInterface = object : IndividualInterface
+        {
+            override fun interfaceFun() {
+                Log.e("interface","isExecuted")
+            }
+        }
+        v.interfaceFun()
+
+        val va : IndividualInterface.FaceInter = object : IndividualInterface.FaceInter
+        {
+            override fun faceInter() {
+                Log.e("nestedInterface","isExecuted")
+            }
+        }
+        va.faceInter()
+
+
+    }
+
+    private fun classAndObjectExample() {
+
+        var objects = ClassAndObjectExample()
+        objects.funs()
+
+        // inner key word is not used
+        val o = ClassAndObjectExample.ClassAndObjectExample0()
+        o.fun0()
+
+        Log.e("fooIs",ClassAndObjectExample.ClassAndObjectExample0().foo())
+
+        // inner key word is used.
+        var obj = ClassAndObjectExample.ClassAndObjectExample0().InnerClass()
+        obj.fun1()
+    }
+
+    private fun labelExample() {
+
+        label@for (i in 0..3)
+        {
+            for (j in 0..7)
+            {
+                if (i==2 && j==3)
+                    break@label
+
+                Log.e("innerLoopIs",j.toString())
+            }
+            Log.e("outerLoopIs",i.toString())
+        }
+    }
+
+    private fun returnBreakContinue() {
+
+        val i = returnType(10)
+        Log.e("returnTypeIs",i.toString())
+
+        for (i in listOf(0,7,9,5,3,1))
+        {
+            if (i==7)
+                continue
+
+            Log.e("continueIs",i.toString())
+        }
+
+        for (i in 1..10)
+        {
+            if (i == 7)
+                break
+
+            Log.e("breakIs",i.toString())
+        }
+
+        for (i in 1..9)
+        {
+            if (i % 7 ==0)
+                return
+
+            Log.e("returnIs",i.toString())
+        }
+    }
+
+    private fun returnType(i: Int): Any {
+
+        return 'i'+i;
+    }
+
+    private fun switch() {
+
+        val i = 3;
+
+        when(i)
+        {
+            1-> Log.e("numberIs",i.toString())
+            3-> Log.e("numberIs",i.toString())
+
+            else-> Log.e("numberIs",i.toString())
+        }
+
+    }
+
+    private fun forLoop() {
+        val list = listOf("j","k","l",'f',1,2)
+        for (i in list)
+            Log.e("iIs",i.toString())
+
+        for ((index,value) in list.withIndex())
+        {
+            val string = "index is $index and value is $value"
+            Log.e("stringIs",string)
+        }
+    }
+
+    private fun ranges() {
+        for(i in 1..3)
+            Log.e("iIs",i.toString())
+
+        val j = 3;
+        if (j in 1..7)
+            Log.e("3Is","iterated")
     }
 
     private fun collectionBasic() {
@@ -140,6 +267,12 @@ class MainActivity : AppCompatActivity() {
         {
             e.printStackTrace();
         }
+
+        var a = IntArray(2)
+        a[0] = 1
+        a[1] = 0
+        Log.e("aIs",a.toString())
+
     }
 
     private fun variablesBasic()
