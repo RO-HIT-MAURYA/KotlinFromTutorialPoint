@@ -21,6 +21,32 @@ class MainActivity : AppCompatActivity() {
         labelExample()
         classAndObjectExample()
         interfaceExample()
+        constructorExample()
+        inheritanceExample()
+        interfaceExample()
+        companionObject()//replacement of static method
+    }
+
+    private fun companionObject() {
+        Log.e("valueIs",ClassAndObjectExample.v)
+        Log.e("methodIs",ClassAndObjectExample.companionMethod(10))
+    }
+
+    private fun inheritanceExample() {
+        var i = Inheritance()
+        i.inheritance()
+
+        i =Inheritances()
+        i.inheritance()
+    }
+
+    private fun constructorExample() {
+        var constructorExample = ConstructorExample(1,"str")
+        Log.e("iIs",constructorExample.int.toString())
+        Log.e("strIs",constructorExample.s)
+
+        constructorExample = ConstructorExample(2,"string",3.0f)
+        Log.e("i,String,fIs",""+constructorExample.int +" , "+ constructorExample.str + " , " +constructorExample.v)
     }
 
     private fun interfaceExample() {
@@ -41,7 +67,12 @@ class MainActivity : AppCompatActivity() {
         }
         va.faceInter()
 
+        val interfaceClass = InterfaceClass()
+        Log.e("interfaceClass",interfaceClass.a.toString())
+        Log.e("interfaceClass",interfaceClass.method())
+        interfaceClass.hello()
 
+        interfaceClass.funsc();
     }
 
     private fun classAndObjectExample() {

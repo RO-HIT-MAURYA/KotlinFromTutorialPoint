@@ -6,6 +6,15 @@ class ClassAndObjectExample
 {
     var v = "Variable"
 
+    companion object
+    {
+        val v = "companionValue"
+        fun companionMethod(va : Int) :String
+        {
+            return va.toString()
+        }
+    }
+
     fun funs()
     {
         Log.e("vIs",v)
